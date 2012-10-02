@@ -1,0 +1,42 @@
+% page 2
+\frame{
+    \frametitle{おさらい}
+    カーネル法：
+    $y(\mathbf{x}) =
+    \mathbf{w}^{\mathrm{T}} {\boldsymbol \phi}(\mathbf{x})$
+    のような非線形の写像(基底関数)
+    $\boldsymbol \phi$を用いた線形結合を考えるときに、
+    カーネル関数
+    \begin{align}
+    k(\mathbf{x}, \mathbf{x'}) 
+    = {\boldsymbol \phi}(\mathbf{x})^{\mathrm{T}}
+    {\boldsymbol \phi} (\mathbf{x'})  \tag{6.1}
+    \end{align}
+    を計算することで、
+    $\boldsymbol \phi$による写像を直接計算せずにすむという方法。\\
+    (実際の関数は、
+    $k(\mathbf{x}, \mathbf{x'}) 
+    = \exp( - \| \mathbf{x} - \mathbf{x'} \|^2
+    / 2 \sigma^2)$
+    みたいな感じ) \vspace{0.2in}
+
+    今回は・・・\\
+    これを確率的識別モデルに適用してみる。
+}
+
+% page 3
+\frame{
+    \frametitle{確率過程って？}
+    \textbf{確率過程}{\optima(stochastic process)}とは、任意の有限な値集合
+        $y(\mathbf{x}_1), \ldots, y(\mathbf{x}_N)$
+    に対して、矛盾のない同時分布を与えるもの。\vspace{0.2in}
+
+    → たとえば、時間とともに変化していく確率変数。\\
+    確率変数($y(\mathbf{x})$とか)がたくさんあって、それを全部まとめたものが
+    確率過程。その中から適当に$N$個を取り出したときの確率分布を考える。\\
+    実生活で目にする(?)ものでいうと、ブラウン運動などがある。\vspace{0.2in}
+
+    \textbf{ガウス過程}{\optima(Gaussian process)}は、確率過程の中でも
+    たくさんの$y(\mathbf{x})$の同時分布$p(y(\mathbf{x}_1), \ldots, y(\mathbf{x}_N))$
+    がガウス分布に従うようなもののこと。
+}

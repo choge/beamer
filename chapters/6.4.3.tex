@@ -1,0 +1,67 @@
+% page 21
+\frame{
+    \frametitle{6.4.3 超パラメータの学習}
+    ガウス過程による予測は、共分散を決める際の超パラメータに依存している。
+    実際の応用では、あらかじめ超パラメータを決めておくよりも、これを学習
+    させることが多い。
+
+    超パラメータの学習は、尤度関数$p(\bm{\mathsf{t}} | {\boldsymbol \theta})$
+    に基づいて行われることが多い。最も単純なアプローチは、対数尤度関数
+    $\ln p(\bm{\mathsf{t}} | {\boldsymbol \theta})$を最大化するような
+    $\boldsymbol \theta$を求めるという方法である。\vspace{0.2in}
+
+    ガウス過程における対数尤度関数は、
+    \begin{gather}
+    \ln p(\bm{\mathsf{t}} | {\boldsymbol \theta}) 
+        = - \frac{1}{2} \ln | \mathbf{C}_N |
+        - \frac{1}{2} \bm{\mathsf{t}}^\mathrm{T} \mathbf{C}_N^{-1} \bm{\mathsf{t}}
+        - \frac{N}{2} \ln (2 \pi)
+    \tag{6.69}
+    \end{gather}
+    で与えられる。
+}
+
+% page 22
+\frame{
+    \frametitle{対数尤度関数の最大化}
+
+    先ほどの続きで、パラメータベクトル$\boldsymbol \theta$の勾配も求める。
+    \begin{align}
+    \frac{\partial}{\partial x} (\mathbf{A}^{-1})
+       &= - \mathbf{A}^{-1} 
+            \frac{\partial \mathbf{A}}{\partial x}
+            \mathbf{A}^{-1}
+    \tag{C.21} \\
+    \frac{\partial}{\partial x} \ln |\mathbf{A}|
+       &= \mathrm{Tr} \left(
+               \mathbf{A}^{-1} \frac{\partial \mathbf{A}}{\partial x}
+               \right)
+       \tag{C.22}
+    \end{align}
+    を用いて(付録C参照)、
+    \begin{gather}
+    \frac{\partial}{\partial \theta_i} \ln p(\bm{\mathsf{t}} | {\boldsymbol \theta})
+        = - \frac{1}{2} \mathrm{Tr} \left(
+                \mathbf{C}_N^{-1} \frac{\partial \mathbf{C}_N}{\partial \theta_i}
+                \right)
+        + \frac{1}{2} \bm{\mathsf{t}}^\mathrm{T} \mathbf{C}_N^{-1}
+          \frac{\partial \mathbf{C}_N}{\partial \theta_i}
+          \mathbf{C}_N^{-1} \bm{\mathsf{t}}
+    \tag{6.70}
+    \end{gather}
+    である。ただし、$\ln p(\bm{\mathsf{t}} | {\boldsymbol \theta})$は非凸関数なので
+    極大点は複数あり得る。
+}
+
+\frame{
+    \frametitle{6.4.3 まとめ}
+    \begin{itemize}
+    \item ガウス過程に現れる超パラメータの学習は、対数尤度の最大化という
+        一般的な手法が用いられることが多い。
+    \item ただし対数尤度関数はカーネル関数のせいで非線形なことが多いので、
+        そうした場合は超パラメータの勾配も求める必要がある。
+    \item ベイズ的な手法を用いて予測することもあるが、その際は近似を用いなければ
+        ならない($p({\boldsymbol \theta})$や$p(\bm{\mathsf{t}}|{\boldsymbol \theta})$
+        を厳密に周辺化することができない)。
+    \end{itemize}
+}

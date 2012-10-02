@@ -1,0 +1,70 @@
+\documentclass[10pt, a4, serif]{beamer}
+
+%% beamer theme
+\usetheme{AnnArbor}
+\usecolortheme{crane}
+
+%% Preambles
+\usepackage{luatexja}
+\usepackage{luatexja-fontspec}
+\usepackage{fontspec} %%% fontを変更する:platexにはない
+%\usepackage[T1]{fontenc}
+\usepackage{lmodern} %%% サンセリフ体の数式記号など
+\usepackage{bm} %%% 太字にする
+%\usepackage{bxascmac} %%% lualatexでitemboxなどを使う
+\usepackage{amsmath} %%% align, gather などのコマンド
+\usepackage{amsfonts} %%% たぶんギリシャ文字の太字
+\usepackage{color}
+\usepackage{graphicx}
+%\usepackage[math-style=TeX]{unicode-math}
+%\usepackage[dvipdfmx]{hyperref}
+
+\renewcommand\mathfamilydefault{\rmdefault}
+%%% FONT platexでコンパイルするときはこのセクションを削除
+%\setmainfont{Times New Roman} %%% platexにはない：
+%\setmainjfont[BoldFont=Hiragino Kaku Gothic Pro W6]{Hiragino Kaku Gothic Pro W3}
+\setmainjfont[BoldFont=FolkPro Bold]{FolkPro Regular}
+%\setmainjfont[BoldFont=ShinGoPr5 Bold]{ShinGoPr5 Light}
+\setsansfont{Helvetica}
+\setsansjfont{Hiragino Maru Gothic Pro W4}
+\setmonofont{Consolas}
+%%% platexを使う場合ここまで削除
+
+%\def\dif#1{\ \mathrm{d} #1}
+%\def\gauss#1{ {\cal N} ( #1 | \mu, \sigma^2 ) }
+%\def\infint#1{ \int_{-\infty}^{\infty} #1 \dif{x} }
+%\newcommand{\bsf}[1]{\bm{\mathsf{#1}}}
+\newcommand{\mbf}[1]{\mathbf{#1}}
+\newcommand{\mrm}[1]{\mathrm{#1}}
+\newcommand{\trp}[1]{ #1^{\mathrm{T}}}  % 転置
+\newcommand{\wt}[1]{\widetilde{#1}}
+%\newcommand{\bs}[1]{ {\boldsymbol #1} }
+
+%%% platexを使う場合ここから削除
+\newjfontfamily\nfmaporo{NfMotoyaAporo W1 KP}
+\newfontfamily\optima{Optima}
+\newjfontfamily\mincho{Hiragino Mincho Pro W3}
+%%% platexを使う場合ここまで削除
+
+\title{6.4. ガウス過程}
+\author{Shunsuke Shigemitsu}
+\institute{M2 Bilab@UT}
+\date{28, September, 2012}
+
+\begin{document}
+
+% page 1 (title)
+\frame{\titlepage}
+
+%% Introduction
+\input{chapters/intro}
+
+%% 6.4.1 Linear Regression again
+\input{chapters/6.4.1}
+
+%% 6.4.2 Regression by Gaussian process
+\input{chapters/6.4.2}
+
+%% 6.4.3 Learning hyper parameters
+\input{chapters/6.4.3.tex}
+\end{document}
